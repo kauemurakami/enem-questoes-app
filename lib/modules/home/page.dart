@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:questoes_enem/models/app_error.dart';
 import 'package:questoes_enem/models/exam.dart';
 import 'package:questoes_enem/modules/home/controller.dart';
+import 'package:questoes_enem/modules/home/widgets/exam_item.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -22,21 +23,36 @@ class HomePage extends StatelessWidget {
                   );
                 }
                 if (snapshot.connectionState == ConnectionState.done) {
-                  return snapshot.data!.fold((AppError error) {
-                    return Center(
-                      child: Text('${error.error?.message}'),
-                    );
-                  }, (List<Exam> exams) {
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: exams.length,
-                      itemBuilder: (context, index) => Card(
+                  return snapshot.data!.fold(
+                    (AppError error) {
+                      return Center(
+                        child: Text('${error.error?.message}'),
+                      );
+                    },
+                    (List<Exam> exams) {
+                      return Expanded(
                         child: Column(
-                          children: [Text('${exams[index].year}')],
+                          spacing: 16.0,
+                          children: [
+                            Text(
+                              'EXAMES DISPONÍVEIS',
+                              style: TextTheme.of(context).titleLarge,
+                            ),
+                            Expanded(
+                              child: ListView.builder(
+                                padding: const EdgeInsets.all(16.0),
+                                shrinkWrap: true,
+                                itemCount: exams.length,
+                                itemBuilder: (context, index) => ExamItemWidget(
+                                  exam: exams[index],
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    );
-                  });
+                      );
+                    },
+                  );
                 }
                 return const SizedBox.shrink();
               },
