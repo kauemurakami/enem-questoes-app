@@ -6,3 +6,7 @@ export 'package:questoes_enem/modules/home/page.dart';
 export 'package:questoes_enem/routes/routes.dart';
 export 'package:questoes_enem/routes/transitions/fade_transition.dart';
 export 'package:questoes_enem/utils/extensions/route_path.dart';
+export 'package:questoes_enem/modules/exam/controller.dart';
+export 'package:questoes_enem/modules/exam/page.dart';
+export 'package:questoes_enem/routes/transitions/slide_from.dart';
+export 'package:questoes_enem/routes/transitions/slide_transition.dart';

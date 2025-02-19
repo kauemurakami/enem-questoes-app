@@ -4,8 +4,8 @@ import 'package:questoes_enem/models/exam.dart';
 import 'package:questoes_enem/services/api.dart';
 import 'package:questoes_enem/services/setup_locator.dart';
 
-class HomeRepository {
+class ExamRepository {
   final ApiService api = getIt<ApiService>();
 
-  Future<Either<AppError, List<Exam>>> fetchExams() async => await api.fetchExams();
+  Future<Either<AppError, Exam>> fetchExam(String year) async => await api.fetchExam(year);
 }

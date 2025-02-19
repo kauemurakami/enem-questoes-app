@@ -1,4 +1,3 @@
-
 import './delegate_imports.dart';
 
 class MyGoRouterDelegate {
@@ -20,18 +19,34 @@ class MyGoRouterDelegate {
         },
       ),
       GoRoute(
-        path: AppRoutes.home.rpath,
-        name: AppRoutes.home,
-        pageBuilder: (_, state) {
-          print(state.fullPath);
-          return CustomFadeTransition(
-            child: ChangeNotifierProvider<HomeController>(
-              create: (context) => HomeController(),
-              child: HomePage(),
+          path: AppRoutes.home.rpath,
+          name: AppRoutes.home,
+          pageBuilder: (_, state) {
+            print(state.fullPath);
+            return CustomFadeTransition(
+              child: ChangeNotifierProvider<HomeController>(
+                create: (context) => HomeController(),
+                child: HomePage(),
+              ),
+            );
+          },
+          routes: <RouteBase>[
+            GoRoute(
+              path: AppRoutes.exam.rpath,
+              name: AppRoutes.exam,
+              pageBuilder: (_, state) {
+                final year = state.extra as String;
+                print(state.fullPath);
+                return CustomSlideTransition(
+                  from: SlideFrom.right,
+                  child: ChangeNotifierProvider<ExamController>(
+                    create: (context) => ExamController(),
+                    child: ExamPage(year: year),
+                  ),
+                );
+              },
             ),
-          );
-        },
-      ),
+          ]),
     ],
   );
 }

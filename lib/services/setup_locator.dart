@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:questoes_enem/modules/exam/repository.dart';
 import 'package:questoes_enem/modules/home/repository.dart';
 import 'package:questoes_enem/services/api.dart';
 
@@ -10,4 +11,5 @@ void setupLocator() {
 
   //repositories
   getIt.registerLazySingleton<HomeRepository>(() => HomeRepository());
+  getIt.registerLazySingleton<ExamRepository>(() => ExamRepository());
 }
