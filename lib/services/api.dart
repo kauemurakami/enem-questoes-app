@@ -13,7 +13,7 @@ class ApiService {
   Future<Either<AppError, Questions>> fetchQuestions(String year, {int? offset = 0}) async {
     final Either<AppError, http.Response> response = await handleHttpExceptions(
       () async => await http.get(
-        Uri.parse('$baseUrl/exams/$year/questions'),
+        Uri.parse('$baseUrl/exams/$year/questions?offset=$offset'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -22,7 +22,6 @@ class ApiService {
 
     return response.fold((AppError error) => Either.left(error), (http.Response res) {
       if (res.statusCode == 200 || res.statusCode == 201) {
-        print(res.body);
         return Either.right(
           Questions.fromJson(
             json.decode(utf8.decode(res.bodyBytes)),
