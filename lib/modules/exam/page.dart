@@ -5,6 +5,7 @@ import 'package:questoes_enem/models/app_error.dart';
 import 'package:questoes_enem/models/exam.dart';
 import 'package:questoes_enem/modules/exam/controller.dart';
 import 'package:questoes_enem/modules/exam/widgets/discipline_item.dart';
+import 'package:questoes_enem/modules/exam/widgets/top_section.dart';
 import 'package:questoes_enem/routes/routes.dart';
 import 'package:questoes_enem/widgets/button.dart';
 
@@ -19,15 +20,7 @@ class ExamPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  BackButton(),
-                  Text(
-                    'Exame $year',
-                    style: TextTheme.of(context).titleLarge,
-                  )
-                ],
-              ),
+              ExamTopSectionWidget(year: year),
               FutureBuilder(
                 future: context.read<ExamController>().fetchExam(year),
                 builder: (context, snapshot) {

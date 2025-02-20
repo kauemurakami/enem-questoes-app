@@ -4,6 +4,7 @@ import 'package:questoes_enem/models/app_error.dart';
 import 'package:questoes_enem/models/questions.dart';
 import 'package:questoes_enem/modules/questions/widgets/question_item.dart';
 import 'package:questoes_enem/modules/questions/controller.dart';
+import 'package:questoes_enem/modules/questions/widgets/top_section.dart';
 
 class QuestionsPage extends StatefulWidget {
   const QuestionsPage({super.key, required this.year});
@@ -37,15 +38,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                BackButton(),
-                Text(
-                  'Questões ${widget.year}',
-                  style: TextTheme.of(context).titleLarge,
-                )
-              ],
-            ),
+            QuestionsTopSection(year: widget.year),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
