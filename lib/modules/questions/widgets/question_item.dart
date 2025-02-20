@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:questoes_enem/models/questions.dart';
+import 'package:questoes_enem/modules/questions/widgets/alternative_item.dart';
 
 class QuestionItemWidget extends Card {
   const QuestionItemWidget({super.key, required this.question});
@@ -46,25 +47,35 @@ class QuestionItemWidget extends Card {
             const SizedBox(
               height: 8.0,
             ),
-            Text('Alternativas', style: TextTheme.of(context).bodyLarge!.copyWith(fontWeight: FontWeight.w600)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Alternativas',
+                  style: TextTheme.of(context).bodyLarge!.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      'Selecione para ver o resultado',
+                      style: TextTheme.of(context).labelSmall,
+                    ),
+                    Icon(
+                      Icons.touch_app_outlined,
+                      size: 18.0,
+                    ),
+                  ],
+                ),
+              ],
+            ),
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               itemCount: question.alternatives?.length,
-              itemBuilder: (context, index) => Card(
-                child: Container(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    spacing: 8.0,
-                    children: [
-                      Text(
-                        question.alternatives![index].letter!,
-                        style: TextStyle(fontWeight: FontWeight.w700),
-                      ),
-                      Flexible(child: Text(question.alternatives![index].text!)),
-                    ],
-                  ),
-                ),
+              itemBuilder: (context, index) => AlternativeItemWidget(
+                alternative: question.alternatives![index],
               ),
             ),
           ],

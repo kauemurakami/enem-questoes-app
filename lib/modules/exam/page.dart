@@ -57,14 +57,6 @@ class ExamPage extends StatelessWidget {
                               itemBuilder: (context, index) =>
                                   DisciplineItemWidget(disciplineTitle: exam.disciplines![index].label!),
                             ),
-                            // ListView.builder(
-                            //   physics: NeverScrollableScrollPhysics(),
-                            //   shrinkWrap: true,
-                            //   itemCount: exam.questions?.length ?? 1,
-                            //   itemBuilder: (context, index) => QuestionItemWidget(
-                            //     question: exam.questions![index],
-                            //   ),
-                            // ),
                             DefaultButton(
                                 callback: () async => await context.pushNamed(
                                       AppRoutes.questions,

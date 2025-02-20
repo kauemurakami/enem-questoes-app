@@ -23,12 +23,12 @@ class _QuestionsPageState extends State<QuestionsPage> {
     });
   }
 
-  @override
-  void dispose() {
-    // Limpa o controlador de rolagem quando o widget for removido
-    context.read<QuestionsController>().scrollController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   // Limpa o controlador de rolagem quando o widget for removido
+  //   context.read<QuestionsController>().scrollController.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
