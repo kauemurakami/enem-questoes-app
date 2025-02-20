@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:questoes_enem/models/app_error.dart';
 import 'package:questoes_enem/models/exam.dart';
 import 'package:questoes_enem/modules/exam/controller.dart';
 import 'package:questoes_enem/modules/exam/widgets/discipline_item.dart';
+import 'package:questoes_enem/routes/routes.dart';
 import 'package:questoes_enem/widgets/button.dart';
 
 class ExamPage extends StatelessWidget {
@@ -54,7 +56,12 @@ class ExamPage extends StatelessWidget {
                             itemBuilder: (context, index) =>
                                 DisciplineItemWidget(disciplineTitle: exam.disciplines![index].label!),
                           ),
-                          DefaultButton(callback: () => print('aa'), text: 'IR PARA QUESTÕES')
+                          DefaultButton(
+                              callback: () async => await context.pushNamed(
+                                    AppRoutes.questions,
+                                    extra: exam.year.toString(),
+                                  ),
+                              text: 'IR PARA QUESTÕES')
                         ],
                       ),
                     );
