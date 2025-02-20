@@ -1,6 +1,3 @@
-import 'package:questoes_enem/modules/questions/controller.dart';
-import 'package:questoes_enem/modules/questions/page.dart';
-
 import './delegate_imports.dart';
 
 class MyGoRouterDelegate {

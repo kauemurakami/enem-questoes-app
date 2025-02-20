@@ -10,3 +10,5 @@ export 'package:questoes_enem/modules/exam/controller.dart';
 export 'package:questoes_enem/modules/exam/page.dart';
 export 'package:questoes_enem/routes/transitions/slide_from.dart';
 export 'package:questoes_enem/routes/transitions/slide_transition.dart';
+export 'package:questoes_enem/modules/questions/controller.dart';
+export 'package:questoes_enem/modules/questions/page.dart';

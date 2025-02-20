@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:questoes_enem/models/app_error.dart';
 import 'package:questoes_enem/models/questions.dart';
+import 'package:questoes_enem/modules/questions/widgets/question_item.dart';
 import 'package:questoes_enem/modules/questions/controller.dart';
 
 class QuestionsPage extends StatelessWidget {
@@ -42,10 +43,15 @@ class QuestionsPage extends StatelessWidget {
                             child: Text('${error.error?.message}'),
                           );
                         }, (Questions questions) {
-                          return ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: questions.questions!.length,
-                            itemBuilder: (context, index) => Text('data $index'),
+                          return SizedBox(
+                            height: MediaQuery.sizeOf(context).height - 100,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: questions.questions!.length,
+                              itemBuilder: (context, index) => QuestionItemWidget(
+                                question: questions.questions![index],
+                              ),
+                            ),
                           );
                         });
                       }
